@@ -7,6 +7,7 @@ import { LootBox } from 'state/types'
 import { provider } from 'web3-core'
 import useI18n from 'hooks/useI18n'
 import ExpandableSectionButton from 'components/ExpandableSectionButton'
+import Spacer from 'components/Spacer'
 import CardActionsContainer from './CardActionsContainer'
 import Preview from './Preview'
 
@@ -90,6 +91,7 @@ const LootBoxCard: React.FC<LootBoxCardProps> = ({ lootBox, ethereum, account })
   const TranslateString = useI18n()
   const [showExpandableSection, setShowExpandableSection] = useState(false)
 
+  const originalPrice = '0.1'
   const displayPrice = getFullDisplayBalance(new BigNumber(lootBox.price))
   const priceLabel = 'GAME'
 
@@ -98,8 +100,12 @@ const LootBoxCard: React.FC<LootBoxCardProps> = ({ lootBox, ethereum, account })
       <Heading mb="8px">{lootBox.lootBoxName}</Heading>
       <Preview lootBox={lootBox} />
       <Flex justifyContent="space-between">
+        <Spacer />
+        <Text bold style={{ textDecoration: 'line-through' }}>{originalPrice} {priceLabel}</Text>
+      </Flex>
+      <Flex justifyContent="space-between">
         <Text color="primary">{TranslateString(999, 'Price')}:</Text>
-        <Text bold>{displayPrice} {priceLabel}</Text>
+        <Text bold color="secondary">{displayPrice} {priceLabel}</Text>
       </Flex>
       <CardActionsContainer lootBox={lootBox} ethereum={ethereum} account={account} />
       <Divider />

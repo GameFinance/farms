@@ -26,7 +26,7 @@ const fetchLootBoxes = async () => {
 
       return {
         ...lootBoxConfig,
-        price: new BigNumber(price).toNumber(),
+        price: new BigNumber(price).toJSON(),
         paused: paused[0]
       }
     })

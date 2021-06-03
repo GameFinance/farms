@@ -46,7 +46,7 @@ const CardActions: React.FC<LootBoxCardActionsProps> = ({ lootBox, ethereum, acc
 
   const renderApprovalOrMintButton = () => {
     return isApproved ? (
-      <MintAction id={lootBox.id} lootBox={lootBox} />
+      <MintAction lootBox={lootBox} />
     ) : (
       <Button mt="8px" fullWidth disabled={requestedApproval} onClick={handleApprove}>
         {TranslateString(999, 'Approve Contract')}

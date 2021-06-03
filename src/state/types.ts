@@ -34,7 +34,7 @@ export interface LootBox extends LootBoxConfig {
     allowance: BigNumber
   }
   paused?: boolean
-  price?: number
+  price?: BigNumber
 }
 
 // Slices states

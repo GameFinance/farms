@@ -99,9 +99,9 @@ const LootBoxCard: React.FC<LootBoxCardProps> = ({ lootBox, ethereum, account })
     <LCard>
       <Heading mb="8px">{lootBox.lootBoxName}</Heading>
       <Preview lootBox={lootBox} />
-      <Flex justifyContent="space-between">
+      <Flex mt={2}  justifyContent="space-between">
         <Spacer />
-        <Text bold style={{ textDecoration: 'line-through' }}>{originalPrice} {priceLabel}</Text>
+        <Text bold color="#999999" style={{ textDecoration: 'line-through' }}>{originalPrice} {priceLabel}</Text>
       </Flex>
       <Flex justifyContent="space-between">
         <Text color="primary">{TranslateString(999, 'Price')}:</Text>

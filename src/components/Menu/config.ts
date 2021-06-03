@@ -39,6 +39,11 @@ const config: MenuEntry[] = [
     icon: 'NftIcon',
     href: '/nft',
   },
+  {
+    label: 'LootBox',
+    icon: 'LootBoxIcon',
+    href: '/lootbox',
+  },
   // {
   //   label: 'Pools',
   //   icon: 'PoolIcon',

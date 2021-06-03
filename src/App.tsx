@@ -13,6 +13,7 @@ import PageLoader from './components/PageLoader'
 const Home = lazy(() => import('./views/Home'))
 const Farms = lazy(() => import('./views/Farms'))
 const Collectibles = lazy(() => import('./views/Collectibles'))
+const LootBox = lazy(() => import('./views/LootBox'))
 // const Lottery = lazy(() => import('./views/Lottery'))
 // const Pools = lazy(() => import('./views/Pools'))
 // const Ifos = lazy(() => import('./views/Ifos'))
@@ -53,6 +54,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/nft">
               <Collectibles />
+            </Route>
+            <Route path="/lootbox">
+              <LootBox />
             </Route>
             {/* <Route path="/pools"> */}
             {/*  <Pools /> */}

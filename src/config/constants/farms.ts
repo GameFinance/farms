@@ -88,12 +88,12 @@ const farms: FarmConfig[] = [
     isTokenOnly: true,
     lpSymbol: 'GAME',
     lpAddresses: {
-      97: '',
+      97: '0x46b2702a5Cb5da391EA17235F1aa1E38e25bA67B',
       56: '0xde5947e8af1c8ce8fb8bc4878c4dbb0b429f493c', // GAME-BUSD LP
     },
     tokenSymbol: 'GAME',
     tokenAddresses: {
-      97: '',
+      97: '0x72dbd80F2B11D183bfaa28EA16aaCee716ACC8aB',
       56: '0xa26E3cF376c4E7872B169fFC96512DcaCe982A1b',
     },
     quoteTokenSymbol: QuoteToken.BUSD,

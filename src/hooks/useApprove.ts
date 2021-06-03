@@ -3,9 +3,9 @@ import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { Contract } from 'web3-eth-contract'
 import { ethers } from 'ethers'
 import { useDispatch } from 'react-redux'
-import { updateUserAllowance, fetchFarmUserDataAsync } from 'state/actions'
-import { approve } from 'utils/callHelpers'
-import { useMasterchef, useCake, useSousChef, useLottery } from './useContract'
+import { updateUserAllowance, fetchFarmUserDataAsync, fetchLootBoxesUserDataAsync } from 'state/actions'
+import { approve, approveCommon } from 'utils/callHelpers'
+import { useMasterchef, useCake, useSousChef, useLottery, useLootBox } from './useContract'
 
 // Approve a Farm
 export const useApprove = (lpContract: Contract) => {
@@ -78,4 +78,23 @@ export const useIfoApprove = (tokenContract: Contract, spenderAddress: string) =
   }, [account, spenderAddress, tokenContract])
 
   return onApprove
+}
+
+// Approve a loot box
+export const useLootBoxApprove = (id, tokenContract) => {
+  const dispatch = useDispatch()
+  const { account }: { account: string } = useWallet()
+  const lootBoxContract = useLootBox(id)
+
+  const handleApprove = useCallback(async () => {
+    try {
+      const tx = await approveCommon(tokenContract, lootBoxContract, account)
+      dispatch(fetchLootBoxesUserDataAsync(account))
+      return tx
+    } catch (e) {
+      return false
+    }
+  }, [account, dispatch, tokenContract, lootBoxContract])
+
+  return { onApprove: handleApprove }
 }

@@ -75,6 +75,14 @@ export interface PoolConfig {
   tokenDecimals: number
 }
 
+export interface LootBoxConfig {
+  id: number
+  image?: string
+  lootBoxName: string
+  address: Address
+  description: string
+}
+
 export type Images = {
   lg: string
   md: string
@@ -115,5 +123,5 @@ export type Nft = {
   identifier: string
 
   // Used to be "monsterId". Used when minting NFT
-  variationId?: number | string
+  variationId?: number
 }

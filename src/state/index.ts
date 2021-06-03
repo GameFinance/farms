@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import farmsReducer from './farms'
 import poolsReducer from './pools'
 import collectiblesReducer from './collectibles'
+import lootBoxesReducer from './lootBoxes'
 
 const store = configureStore({
   devTools: process.env.NODE_ENV !== 'production',
@@ -10,6 +11,7 @@ const store = configureStore({
     farms: farmsReducer,
     pools: poolsReducer,
     collectibles: collectiblesReducer,
+    lootBoxes: lootBoxesReducer
   },
 })
 

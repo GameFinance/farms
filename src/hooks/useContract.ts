@@ -9,7 +9,7 @@ import {
   getLotteryTicketAddress,
   getMonsterMintingFarmAddress
 } from 'utils/addressHelpers'
-import { poolsConfig } from 'config/constants'
+import { lootBoxesConfig, poolsConfig } from 'config/constants'
 import { PoolCategory } from 'config/constants/types'
 import ifo from 'config/abi/ifo.json'
 import erc20 from 'config/abi/erc20.json'
@@ -22,6 +22,9 @@ import masterChef from 'config/abi/masterchef.json'
 import sousChef from 'config/abi/sousChef.json'
 import sousChefBnb from 'config/abi/sousChefBnb.json'
 import monsterMintingFarm from 'config/abi/monsterMintingFarm.json'
+import lootBox from 'config/abi/lootbox.json'
+
+const CHAIN_ID = process.env.REACT_APP_CHAIN_ID
 
 const useContract = (abi: AbiItem, address: string, contractOptions?: ContractOptions) => {
   const web3 = useWeb3()
@@ -92,6 +95,12 @@ export const useSousChef = (id) => {
 export const useMonsterMintingFarm = () => {
   const abi = (monsterMintingFarm as unknown) as AbiItem
   return useContract(abi, getMonsterMintingFarmAddress())
+}
+
+export const useLootBox = (id) => {
+  const abi = (lootBox as unknown) as AbiItem
+  const config = lootBoxesConfig.find((f) => f.id === id)
+  return useContract(abi, config.address[CHAIN_ID])
 }
 
 export default useContract

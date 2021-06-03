@@ -8,7 +8,11 @@ export const getAddress = (address: Address): string => {
 }
 
 export const getCakeAddress = () => {
-  return getAddress(addresses.cake)
+  // return getAddress(addresses.cake)
+  return getGameAddress()
+}
+export const getGameAddress = () => {
+  return getAddress(addresses.game)
 }
 export const getMasterChefAddress = () => {
   return getAddress(addresses.masterChef)

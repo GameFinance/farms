@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js'
-import { FarmConfig, PoolConfig } from 'config/constants/types'
+import { FarmConfig, LootBoxConfig, PoolConfig } from 'config/constants/types'
 
 export interface Farm extends FarmConfig {
   tokenAmount?: BigNumber
@@ -29,6 +29,14 @@ export interface Pool extends PoolConfig {
   }
 }
 
+export interface LootBox extends LootBoxConfig {
+  userData?: {
+    allowance: BigNumber
+  }
+  paused?: boolean
+  price?: number
+}
+
 // Slices states
 
 export interface FarmsState {
@@ -37,6 +45,11 @@ export interface FarmsState {
 
 export interface PoolsState {
   data: Pool[]
+}
+
+// LootBoxes
+export interface LootBoxesState {
+  data: LootBox[]
 }
 
 // Collectibles
@@ -55,4 +68,5 @@ export interface State {
   farms: FarmsState
   pools: PoolsState
   collectibles: CollectiblesState
+  lootBoxes: LootBoxesState
 }

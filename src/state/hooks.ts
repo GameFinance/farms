@@ -5,8 +5,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useAppDispatch } from 'state'
 import useRefresh from 'hooks/useRefresh'
 import Nfts from 'config/constants/nfts'
-import { fetchFarmsPublicDataAsync, fetchPoolsPublicDataAsync, fetchPoolsUserDataAsync } from './actions'
-import { State, Farm, Pool } from './types'
+import {
+  fetchFarmsPublicDataAsync,
+  fetchPoolsPublicDataAsync,
+  fetchPoolsUserDataAsync,
+  fetchLootBoxesPublicDataAsync
+} from './actions'
+import { State, Farm, Pool, LootBox } from './types'
 import { QuoteToken } from '../config/constants/types'
 import { fetchWalletNfts } from './collectibles'
 
@@ -17,6 +22,7 @@ export const useFetchPublicData = () => {
   const { slowRefresh } = useRefresh()
   useEffect(() => {
     dispatch(fetchFarmsPublicDataAsync())
+    dispatch(fetchLootBoxesPublicDataAsync())
     // dispatch(fetchPoolsPublicDataAsync())
   }, [dispatch, slowRefresh])
 }
@@ -128,5 +134,22 @@ export const useGetCollectibles = () => {
     isLoading,
     tokenIds: data,
     nftsInWallet: Nfts.filter((nft) => identifiers.includes(nft.identifier)),
+  }
+}
+
+// LootBox
+export const useLootBoxes = (): LootBox[] => {
+  return useSelector((state: State) => state.lootBoxes.data)
+}
+
+export const useLootBoxFromId = (id): LootBox => {
+  return useSelector((state: State) => state.lootBoxes.data.find((f) => f.id === id))
+}
+
+export const useLootBoxUser = (id) => {
+  const lootBox = useLootBoxFromId(id)
+
+  return {
+    allowance: lootBox.userData ? new BigNumber(lootBox.userData.allowance) : new BigNumber(0),
   }
 }

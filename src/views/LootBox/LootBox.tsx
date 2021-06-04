@@ -6,13 +6,18 @@ import { provider } from 'web3-core'
 import { Image, Heading } from 'uikit'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
+import styled from 'styled-components'
 import { useLootBoxes } from 'state/hooks'
 import useRefresh from 'hooks/useRefresh'
 import { fetchLootBoxesUserDataAsync } from 'state/actions'
 import useI18n from 'hooks/useI18n'
 import LootBoxCard from './components/LootBoxCard/LootBoxCard'
-import Divider from './components/Divider'
 
+const StyledHero = styled.div`
+  border-bottom: 2px solid ${({ theme }) => theme.colors.textSubtle};
+  margin-bottom: 24px;
+  padding-bottom: 32px;
+`
 
 const LootBox: React.FC = () => {
   const { path } = useRouteMatch()
@@ -30,14 +35,12 @@ const LootBox: React.FC = () => {
 
   return (
     <Page>
-      <Heading as="h1" size="lg" color="text" mb="50px" style={{ textAlign: 'center' }}>
-        {TranslateString(320, 'Stake LP tokens to earn GAME')}
-      </Heading>
-      <Heading as="h2" color="text" mb="50px" style={{ textAlign: 'center' }}>
-        {TranslateString(10000, 'Deposit Fee will be used to buyback GAME')}
-      </Heading>
+      <StyledHero>
+        <Heading as="h1" size="xxl" color="secondary">
+          {TranslateString(999, 'LootBox')}
+        </Heading>
+      </StyledHero>
       <div>
-        <Divider />
         <FlexLayout>
           <Route exact path={`${path}`}>
             {lootBoxes.map(( lootBox ) => {

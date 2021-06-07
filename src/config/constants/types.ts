@@ -110,6 +110,13 @@ export enum NftType {
   GAME = 'game'
 }
 
+export enum NftRareType {
+  LR = 'LR',
+  SR = 'SR',
+  R = 'R',
+  N = 'N'
+}
+
 export type Nft = {
   description: string
   name: string
@@ -117,6 +124,7 @@ export type Nft = {
   sortOrder: number
   type: NftType
   video?: NftVideo
+  rare?: NftRareType
 
   // Uniquely identifies the nft.
   // Used for matching an NFT from the config with the data from the NFT's tokenURI

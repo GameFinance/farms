@@ -8,7 +8,6 @@ interface PreviewProps {
 }
 
 const Container = styled.div`
-  background-color: ${({ theme }) => theme.colors.borderColor};
   position: relative;
   width: 100%;
   overflow: hidden;
@@ -23,7 +22,7 @@ const StyledImage = styled.img`
   transition: opacity 1s linear;
   height: 100%;
   object-fit: cover;
-  border-radius: 32px 32px 0 0;
+  border-radius: 10px 10px 0 0;
 `
 
 const StyledVideo = styled.video`

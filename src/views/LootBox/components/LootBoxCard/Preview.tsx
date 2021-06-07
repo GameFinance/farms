@@ -22,7 +22,6 @@ const StyledImage = styled.img`
   transition: opacity 1s linear;
   height: 100%;
   object-fit: cover;
-  border-radius: 32px 32px 0 0;
 `
 
 const Preview: React.FC<PreviewProps> = ({ lootBox }) => {
